@@ -1,6 +1,5 @@
 package main.java.ru.javacore.lessons.l2;
 
-import com.sun.tools.javac.Main;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -23,7 +22,7 @@ public class Program {
 
     public static void main(String[] args) {
         while (true) {
-            int[] turn = new int[2];
+            int[] turn;
             initialize();
             printField();
             while (true) {
@@ -182,28 +181,15 @@ public class Program {
      * @return признак победы
      */
     static boolean checkWin(char dot, int[] turn) {
-//        // Проверка по трем горизонталям
-//        if (field[0][0] == dot && field[0][1] == dot && field[0][2] == dot) return true;
-//        if (field[1][0] == dot && field[1][1] == dot && field[1][2] == dot) return true;
-//        if (field[2][0] == dot && field[2][1] == dot && field[2][2] == dot) return true;
-//
-//        // Проверка по трем вертикалям
-//        if (field[0][0] == dot && field[1][0] == dot && field[2][0] == dot) return true;
-//        if (field[0][1] == dot && field[1][1] == dot && field[2][1] == dot) return true;
-//        if (field[0][2] == dot && field[1][2] == dot && field[2][2] == dot) return true;
-//
-//        // Проверка по диагоналям
-//        if (field[0][0] == dot && field[1][1] == dot && field[2][2] == dot) return true;
-//        if (field[0][2] == dot && field[1][1] == dot && field[2][0] == dot) return true;
-        if (checkHorizontal(turn, dot, WIN_COUNT)) return true;
-        else if (checkVertical(turn, dot, WIN_COUNT)) return true;
-        else if (checkMainDiag(turn, dot, WIN_COUNT)) return true;
-        else if (checkSideDiag(turn, dot, WIN_COUNT)) return true;
-        else return false;
+        return checkHorizontal(turn, dot, WIN_COUNT) ||
+                checkVertical(turn, dot, WIN_COUNT) ||
+                checkMainDiag(turn, dot, WIN_COUNT) ||
+                checkSideDiag(turn, dot, WIN_COUNT);
     }
 
     /**
      * проверка выигрыша по горизонтали
+     *
      * @param turn последний ход
      */
     static boolean checkHorizontal(int[] turn, char dot, int winCount) {
@@ -224,10 +210,12 @@ public class Program {
         }
         return false;
     }
-/**
- * проверка выигрыша по вертикали
- * @param turn последний ход
- */
+
+    /**
+     * проверка выигрыша по вертикали
+     *
+     * @param turn последний ход
+     */
     static boolean checkVertical(int[] turn, char dot, int winCount) {
         int y = turn[1];
         int x = turn[0];
@@ -249,6 +237,7 @@ public class Program {
 
     /**
      * проверка выигрыша по главной диагонали
+     *
      * @param turn последний ход
      */
     static boolean checkMainDiag(int[] turn, char dot, int winCount) {
@@ -274,6 +263,7 @@ public class Program {
 
     /**
      * проверка выигрыша по побочной диагонали
+     *
      * @param turn последний ход
      */
     static boolean checkSideDiag(int[] turn, char dot, int winCount) {
