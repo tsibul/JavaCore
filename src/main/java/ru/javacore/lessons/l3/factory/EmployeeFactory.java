@@ -24,14 +24,14 @@ public class EmployeeFactory {
                 worker.setSurName(surNameEmp);
                 worker.setYearBirth(yearBirth);
                 worker.setSalary(60000f + random.nextInt(1, 10) * 1000f);
-                employees.add((Employee) worker);
+                employees.add(worker);
             } else {
                 Freelancer freelancer = new Freelancer();
                 freelancer.setName(nameEmp);
                 freelancer.setSurName(surNameEmp);
                 freelancer.setYearBirth(yearBirth);
                 freelancer.setSalary(350f + random.nextInt(1, 6) * 5f);
-                employees.add((Employee) freelancer);
+                employees.add(freelancer);
             }
         }
         return employees;
