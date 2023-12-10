@@ -2,9 +2,6 @@ package main.java.ru.javacore.lessons.l5;
 
 import java.io.File;
 
-/**
- * TODO: Доработать метод print, необходимо распечатывать директории и файлы
- */
 public class Tree {
 
     public static void main(String[] args) {
